@@ -5,26 +5,34 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.liqiong.lucy.http.DemoRequest;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.liqiong.lucy.annotation.Autowired;
 import com.liqiong.lucy.module.Module;
 import com.liqiong.lucy.module.impl.LucyKernel;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity {
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         LucyKernel.getInstance().initialize(this);
-        TextView tv = (TextView) findViewById(R.id.tv);
+        tv = (TextView) findViewById(R.id.tv);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -36,6 +44,26 @@ public class MainActivity extends AppCompatActivity {
                 LucyController.myHelp.fuck();
             }
         });
+
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DemoRequest("http://www.lqcode.com") {
+                    @Override
+                    public void onSuccess(String result) {
+                        tv.setText(tv.getText() + "|||||" + result);
+                    }
+
+                    @Override
+                    public void onFail(String result) {
+
+                    }
+                };
+
+
+            }
+        });
+
     }
 
     @Override

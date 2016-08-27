@@ -19,6 +19,6 @@ public class MyHelpImpl extends  MyHelp {
 
     @Override
     public void fuck() {
-        LucyController.uiHelp.fuck("xxxxxxxxxxxxxxxxxxxxx");
+        LucyController.uiHelp.toast("xxxxxxxxxxxxxxxxxxxxx");
     }
 }
