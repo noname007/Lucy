@@ -2,6 +2,7 @@ package com.liqiong.lucy.module.impl;
 
 import android.content.Context;
 
+import com.liqiong.lucy.http.MyRequest;
 import com.liqiong.lucy.module.Module;
 
 /**
@@ -25,6 +26,8 @@ public final class LucyKernel extends Module {
     public void initialize(Context context) {
         this.context = context;
         exec(LucyController.class);
+
+        LucyController.autowired.execAuto(MyRequest.class);
     }
 
     /**

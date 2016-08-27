@@ -11,11 +11,12 @@ import okhttp3.Response;
 /**
  * Created by LiQiong on 2016/8/27.16:20
  */
-public abstract class OkHttpRequest implements IRequest {
-
+public class OkHttpRequest implements IRequest {
+    private RequestCallBack callBack;
 
     @Override
-    public void _connect(String url) {
+    public void _connect(String url, RequestCallBack callBack) {
+        this.callBack = callBack;
         new RequestThread(url).start();
     }
 
@@ -37,7 +38,7 @@ public abstract class OkHttpRequest implements IRequest {
                 LucyController.uiHelp.post(new Runnable() {
                     @Override
                     public void run() {
-                        onSuccess(result);
+                        callBack._onSuccess(result);
                     }
                 });
             } catch (IOException e) {

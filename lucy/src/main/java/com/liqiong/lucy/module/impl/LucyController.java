@@ -2,7 +2,8 @@ package com.liqiong.lucy.module.impl;
 
 import android.util.Log;
 
-import com.liqiong.lucy.annotation.Autowired;
+import com.liqiong.lucy.annotation.AutowiredModule;
+import com.liqiong.lucy.annotation.impl.AutowiredImpl;
 import com.liqiong.lucy.module.Module;
 
 /**
@@ -11,11 +12,14 @@ import com.liqiong.lucy.module.Module;
 public class LucyController extends Module {
 
 
-    @Autowired
+    @AutowiredModule
     public static UiHelp uiHelp;
 
-    @Autowired(clazz = MyHelpImpl.class)
+    @AutowiredModule(clazz = MyHelpImpl.class)
     public static MyHelp myHelp;
+
+    @AutowiredModule
+    public static AutowiredImpl autowired;
 
     @Override
     public void onCreate() {

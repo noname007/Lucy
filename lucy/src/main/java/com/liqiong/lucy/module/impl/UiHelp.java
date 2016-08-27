@@ -18,13 +18,6 @@ public class UiHelp extends Module {
     public void onCreate() {
         mToast = Toast.makeText(LucyKernel.getInstance().getContext(), "", Toast.LENGTH_SHORT);
         mHandler = new Handler(Looper.getMainLooper());
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
-
     }
 
     @Override
