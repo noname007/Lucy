@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.liqiong.lucy.http.DemoRequest;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.liqiong.lucy.module.impl.LucyKernel;
 
@@ -41,7 +40,24 @@ public class MainActivity extends AppCompatActivity {
                 new DemoRequest() {
                     @Override
                     public void _onSuccess(String result) {
-                        tv.setText(tv.getText()+result);
+                        LucyController.uiHelp.toast("http://www.lqcode.com--->>>"+result);
+                    }
+
+                    @Override
+                    public void _onFail(String result) {
+
+                    }
+                };
+            }
+        });
+        findViewById(R.id.btn001).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                new Demo2Request(){
+                    @Override
+                    public void _onSuccess(String result) {
+                        LucyController.uiHelp.toast("http://www.baidu.com--->>>"+result);
                     }
 
                     @Override

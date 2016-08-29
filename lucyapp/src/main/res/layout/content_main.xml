@@ -19,6 +19,14 @@
 
     <Button
         android:id="@+id/btn"
+        android:layout_below="@id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Http Demo Test!"/>
+
+    <Button
+        android:layout_below="@id/btn"
+        android:id="@+id/btn001"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Http Demo Test!"/>
