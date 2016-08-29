@@ -1,22 +1,25 @@
 package com.liqiong.lucy.http;
 
 import com.liqiong.lucy.annotation.Autowired;
-import com.liqiong.lucy.annotation.AutowiredModule;
+import com.liqiong.lucy.module.impl.LucyController;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * Created by LiQiong on 2016/8/27.16:44
  */
 public abstract class MyRequest implements RequestCallBack {
-    @Autowired(clazz = OkHttpRequest.class)
-    private IRequest request;
 
     protected String url;
-    private HashMap<String, Objects> paramMap = new HashMap<>();
+    protected String test;
+    private HashMap<String, Object> paramMap = new HashMap<>();
 
     protected void connent() {
-        request._connect(url, this);
+        LucyController.request._connect(url, this);
+    }
+
+    protected MyRequest addParam(String key, Object object) {
+        paramMap.put(key, object);
+        return this;
     }
 }

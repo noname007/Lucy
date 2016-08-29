@@ -9,11 +9,22 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by LiQiong on 2016/8/27.19:18
+ * Created by LiQiong on 2016/8/24.
+ * 自动注入module 并且还是执行生命周期
  */
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Autowired {
-    Class<? extends Object> clazz() default Object.class;
+    Class<? extends Module> clazz() default NOT_IMPL_MODULE.class;
+
+    class NOT_IMPL_MODULE extends Module {
+        @Override
+        public void onCreate() {
+        }
+
+        @Override
+        public void onDestroy() {
+        }
+    }
 }

@@ -26,8 +26,6 @@ public final class LucyKernel extends Module {
     public void initialize(Context context) {
         this.context = context;
         exec(LucyController.class);
-
-        LucyController.autowired.execAuto(MyRequest.class);
     }
 
     /**

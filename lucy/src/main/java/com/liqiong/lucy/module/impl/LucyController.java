@@ -2,8 +2,9 @@ package com.liqiong.lucy.module.impl;
 
 import android.util.Log;
 
-import com.liqiong.lucy.annotation.AutowiredModule;
-import com.liqiong.lucy.annotation.impl.AutowiredImpl;
+import com.liqiong.lucy.annotation.Autowired;
+import com.liqiong.lucy.http.ARequest;
+import com.liqiong.lucy.http.OkHttpRequest;
 import com.liqiong.lucy.module.Module;
 
 /**
@@ -12,14 +13,14 @@ import com.liqiong.lucy.module.Module;
 public class LucyController extends Module {
 
 
-    @AutowiredModule
+    @Autowired
     public static UiHelp uiHelp;
 
-    @AutowiredModule(clazz = MyHelpImpl.class)
+    @Autowired(clazz = MyHelpImpl.class)
     public static MyHelp myHelp;
 
-    @AutowiredModule
-    public static AutowiredImpl autowired;
+    @Autowired(clazz = OkHttpRequest.class)
+    public static ARequest request;
 
     @Override
     public void onCreate() {

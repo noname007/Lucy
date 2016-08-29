@@ -11,7 +11,7 @@ import okhttp3.Response;
 /**
  * Created by LiQiong on 2016/8/27.16:20
  */
-public class OkHttpRequest implements IRequest {
+public class OkHttpRequest extends ARequest {
     private RequestCallBack callBack;
 
     @Override

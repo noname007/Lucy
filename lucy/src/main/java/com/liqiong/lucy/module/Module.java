@@ -1,6 +1,6 @@
 package com.liqiong.lucy.module;
 
-import com.liqiong.lucy.annotation.AutowiredModule;
+import com.liqiong.lucy.annotation.Autowired;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public abstract class Module {
 
     /**
      * 初始化 module 的变量
-     * 是指：AutowiredModule 自动注入的变量类
+     * 是指：Autowired 自动注入的变量类
      *
      * @param module
      */
@@ -52,11 +52,11 @@ public abstract class Module {
         //下面的是参数
         Field[] fields = module.getFields();
         for (Field mField : fields) {
-            AutowiredModule mAuto = mField.getAnnotation(AutowiredModule.class);
+            Autowired mAuto = mField.getAnnotation(Autowired.class);
             if (mAuto != null) {
                 Class<? extends Module> mClass = mAuto.clazz();
                 // 这个是管理变量的module
-                if (mClass == AutowiredModule.NOT_IMPL_MODULE.class)
+                if (mClass == Autowired.NOT_IMPL_MODULE.class)
                     mClass = (Class<? extends Module>) mField.getType();
                 Module m = null;
                 try {
