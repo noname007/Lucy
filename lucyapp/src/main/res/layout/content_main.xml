@@ -12,24 +12,9 @@
                 tools:context="com.liqiong.lucyapp.MainActivity"
                 tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btn"
-        android:layout_below="@id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Http Demo Test!"/>
-
-    <Button
-        android:layout_below="@id/btn"
-        android:id="@+id/btn001"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Http Demo Test!"/>
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

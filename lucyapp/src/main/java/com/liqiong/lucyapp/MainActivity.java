@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 new DemoRequest() {
                     @Override
                     public void _onSuccess(String result) {
-                        LucyController.uiHelp.toast("http://www.lqcode.com--->>>"+result);
+                        LucyController.uiHelp.toast("http://www.baidu.com--->>>"+result);
                     }
 
                     @Override
