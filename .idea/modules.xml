@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lucy.iml" filepath="$PROJECT_DIR$/Lucy.iml" />
       <module fileurl="file://$PROJECT_DIR$/activityoptionsdemo/activityoptionsdemo.iml" filepath="$PROJECT_DIR$/activityoptionsdemo/activityoptionsdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lucy/lucy.iml" filepath="$PROJECT_DIR$/lucy/lucy.iml" />
       <module fileurl="file://$PROJECT_DIR$/lucyapp/lucyapp.iml" filepath="$PROJECT_DIR$/lucyapp/lucyapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lucytv/lucytv.iml" filepath="$PROJECT_DIR$/lucytv/lucytv.iml" />
     </modules>
   </component>
 </project>
