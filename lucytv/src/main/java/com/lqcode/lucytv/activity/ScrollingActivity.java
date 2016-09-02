@@ -1,4 +1,4 @@
-package com.lqcode.lucytv;
+package com.lqcode.lucytv.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.liqiong.lucy.BaseActivity;
+import com.lqcode.lucytv.R;
 
 public class ScrollingActivity extends AppCompatActivity {
 

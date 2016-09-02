@@ -1,4 +1,4 @@
-package com.lqcode.lucytv;
+package com.lqcode.lucytv.activity;
 
 import android.app.Application;
 
