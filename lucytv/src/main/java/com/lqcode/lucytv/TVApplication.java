@@ -1,7 +1,8 @@
-package com.lqcode.lucytv.activity;
+package com.lqcode.lucytv;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.liqiong.lucy.module.impl.LucyKernel;
 
 /**
@@ -11,6 +12,11 @@ public class TVApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        LucyKernel.getInstance().initialize(getApplicationContext());
+        initialize();
+    }
+
+    private void initialize() {
+        LucyKernel.getInstance().initialize(this);
+        Fresco.initialize(this);
     }
 }

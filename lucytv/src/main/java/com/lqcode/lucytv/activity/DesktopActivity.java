@@ -10,12 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSON;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.liqiong.lucy.BaseActivity;
-import com.liqiong.lucy.module.impl.LucyController;
 import com.liqiong.lucy.module.impl.LucyKernel;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.Tools.ImageTool;
-import com.lqcode.lucytv.Tools.JsonTool;
 import com.lqcode.lucytv.entity.TVItem;
 import com.lqcode.lucytv.network.DesktopRequest;
 
@@ -34,7 +33,7 @@ public class DesktopActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desktop);
         RecyclerView recyclerViewMain = (RecyclerView) findViewById(R.id.rv_main);
-        recyclerViewMain.setLayoutManager(new GridLayoutManager(this, 1));
+        recyclerViewMain.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerViewMain.setAdapter(desktopAdapder = new DesktopAdapder());
         desktopNetwork();
     }
@@ -58,11 +57,11 @@ public class DesktopActivity extends BaseActivity {
 
     //=================================================================
     class DesktopHolder extends RecyclerView.ViewHolder {
-        private ImageView itemIV;
+        private SimpleDraweeView itemIV;
 
         public DesktopHolder(View itemView) {
             super(itemView);
-            itemIV = (ImageView) itemView.findViewById(R.id.iv_desktop_item);
+            itemIV = (SimpleDraweeView) itemView.findViewById(R.id.sdv_item);
         }
     }
 
@@ -78,7 +77,7 @@ public class DesktopActivity extends BaseActivity {
         public void onBindViewHolder(DesktopHolder holder, int position) {
 //            holder.itemIV.setImageResource(R.mipmap.ic_launcher);
             TVItem item = items.get(position);
-            ImageTool.imageLoader.displayImage(item.getPng(), holder.itemIV);
+            holder.itemIV.setImageURI(item.getPng());
         }
 
         @Override

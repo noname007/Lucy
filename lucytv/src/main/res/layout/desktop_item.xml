@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/iv_desktop_item"
-    android:layout_width="150dip"
-    android:layout_height="150dip"
-    android:src="@mipmap/ic_launcher" />
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sdv_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        fresco:placeholderImage="@mipmap/ic_launcher" />
+
+
+</RelativeLayout>
