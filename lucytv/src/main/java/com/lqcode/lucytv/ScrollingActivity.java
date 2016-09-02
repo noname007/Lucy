@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.liqiong.lucy.BaseActivity;
+
 public class ScrollingActivity extends AppCompatActivity {
 
     @Override
