@@ -2,8 +2,15 @@ package com.lqcode.lucytv.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +21,7 @@ import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyKernel;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.entity.TVItem;
+import com.lqcode.lucytv.fragment.LiveFragment;
 import com.lqcode.lucytv.network.DesktopRequest;
 
 import java.util.ArrayList;
@@ -23,61 +31,76 @@ import java.util.List;
  * Created by LiQiong on 16/9/1.
  */
 public class DesktopActivity extends BaseActivity {
-    private List<TVItem> items = new ArrayList<>();
-    private DesktopAdapder desktopAdapder;
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desktop);
-        RecyclerView recyclerViewMain = (RecyclerView) findViewById(R.id.rv_main);
-        recyclerViewMain.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerViewMain.setAdapter(desktopAdapder = new DesktopAdapder());
-        desktopNetwork();
+
+        setupToolbar();
+
+        setupViewPager();
+
+        setupCollapsingToolbar();
     }
 
-    private void desktopNetwork() {
-        new DesktopRequest() {
-            @Override
-            public void _onSuccess(String result) {
-                items = JSON.parseArray(result, TVItem.class);
-                desktopAdapder.notifyDataSetChanged();
-            }
+    private void setupCollapsingToolbar() {
+        final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(
+                R.id.collapse_toolbar);
 
-            @Override
-            public void _onFail(String result) {
-
-            }
-        };
+        collapsingToolbar.setTitleEnabled(false);
     }
 
-    //=================================================================
-    class DesktopHolder extends RecyclerView.ViewHolder {
-        private SimpleDraweeView itemIV;
+    private void setupViewPager() {
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
 
-        public DesktopHolder(View itemView) {
-            super(itemView);
-            itemIV = (SimpleDraweeView) itemView.findViewById(R.id.sdv_item);
-        }
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
-    class DesktopAdapder extends RecyclerView.Adapter<DesktopHolder> {
+    private void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setCollapsible(false);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("频道");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
 
-        @Override
-        public DesktopHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new DesktopHolder(LayoutInflater.from(LucyKernel.getInstance().getContext())
-                    .inflate(R.layout.desktop_item, parent, false));
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new LiveFragment(), "直播");
+        adapter.addFrag(new LiveFragment(), "电影");
+
+        viewPager.setAdapter(adapter);
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
         @Override
-        public void onBindViewHolder(DesktopHolder holder, int position) {
-            TVItem item = items.get(position);
-            holder.itemIV.setImageURI(item.getPng());
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
         }
 
         @Override
-        public int getItemCount() {
-            return items.size();
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFrag(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
         }
     }
 }

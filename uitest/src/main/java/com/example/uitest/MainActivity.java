@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setCollapsible(false);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("TabbedCoordinatorLayout");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
