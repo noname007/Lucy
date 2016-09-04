@@ -1,1 +1,1 @@
-include ':app', ':lucy', ':lucyapp', ':activityoptionsdemo', ':lucytv'
+include ':app', ':lucy', ':lucyapp', ':activityoptionsdemo', ':lucytv', ':uitest'

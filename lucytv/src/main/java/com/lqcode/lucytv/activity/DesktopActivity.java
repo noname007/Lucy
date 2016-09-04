@@ -7,14 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyKernel;
 import com.lqcode.lucytv.R;
-import com.lqcode.lucytv.Tools.ImageTool;
 import com.lqcode.lucytv.entity.TVItem;
 import com.lqcode.lucytv.network.DesktopRequest;
 
@@ -43,8 +41,6 @@ public class DesktopActivity extends BaseActivity {
             @Override
             public void _onSuccess(String result) {
                 items = JSON.parseArray(result, TVItem.class);
-//                items = (ArrayList<TVItem>) JsonTool.objectToEntity(result);
-//                LucyController.uiHelp.toast(items.toString());
                 desktopAdapder.notifyDataSetChanged();
             }
 
@@ -75,7 +71,6 @@ public class DesktopActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(DesktopHolder holder, int position) {
-//            holder.itemIV.setImageResource(R.mipmap.ic_launcher);
             TVItem item = items.get(position);
             holder.itemIV.setImageURI(item.getPng());
         }

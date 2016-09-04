@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/lucy" />
             <option value="$PROJECT_DIR$/lucyapp" />
             <option value="$PROJECT_DIR$/lucytv" />
+            <option value="$PROJECT_DIR$/uitest" />
           </set>
         </option>
         <option name="myModules">
@@ -24,6 +25,7 @@
             <option value="$PROJECT_DIR$/lucy" />
             <option value="$PROJECT_DIR$/lucyapp" />
             <option value="$PROJECT_DIR$/lucytv" />
+            <option value="$PROJECT_DIR$/uitest" />
           </set>
         </option>
       </GradleProjectSettings>
