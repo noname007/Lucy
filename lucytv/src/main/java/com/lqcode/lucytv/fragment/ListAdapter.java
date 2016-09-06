@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lqcode.lucytv.R;
+import com.lqcode.lucytv.entity.TVItem;
 
 import java.util.List;
 
@@ -16,9 +17,9 @@ import java.util.List;
  */
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
-    List<String> mListData;
+    List<TVItem> mListData;
 
-    public ListAdapter(List<String> mListData) {
+    public ListAdapter(List<TVItem> mListData) {
         this.mListData = mListData;
     }
 
@@ -31,12 +32,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder myViewHolder, int i) {
-        String temp=mListData.get(i);
-        if(temp.length()==1)
-            temp+="  ";
-        else if(temp.length()==2)
-            temp+=" ";
-        myViewHolder.title.setText(temp);
+        TVItem item=mListData.get(i);
+        String name=item.getLiveName().replace("cctv","");
+        if(name.length()==1)
+            name+="  ";
+        else if(name.length()==2)
+            name+=" ";
+        myViewHolder.title.setText(name);
     }
 
     @Override
@@ -54,6 +56,4 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
             title = (TextView) itemView.findViewById(R.id.listitem_name);
         }
     }
-
 }
-

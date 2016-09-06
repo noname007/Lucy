@@ -22,6 +22,7 @@ import com.liqiong.lucy.module.impl.LucyKernel;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.entity.TVItem;
 import com.lqcode.lucytv.fragment.LiveFragment;
+import com.lqcode.lucytv.fragment.MoviceFragment;
 import com.lqcode.lucytv.network.DesktopRequest;
 
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class DesktopActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new LiveFragment(), "直播");
-        adapter.addFrag(new LiveFragment(), "电影");
+        adapter.addFrag(new MoviceFragment(), "电影");
 
         viewPager.setAdapter(adapter);
     }

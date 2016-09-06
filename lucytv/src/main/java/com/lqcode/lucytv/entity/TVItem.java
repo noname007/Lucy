@@ -4,40 +4,51 @@ package com.lqcode.lucytv.entity;
  * Created by Administrator on 2016/9/2.
  */
 public class TVItem extends Entity {
-    private int id;
-    private String name;
-    private String png;
 
-    public int getId() {
-        return id;
+    private String channelName;
+    private String isLive;
+    private String liveName;
+    private long liveSt;
+
+    public String getChannelName() {
+        return channelName;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
     }
 
-    public String getName() {
-        return name;
+    public String getIsLive() {
+        return isLive;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIsLive(String isLive) {
+        this.isLive = isLive;
     }
 
-    public String getPng() {
-        return png;
+    public String getLiveName() {
+        return liveName;
     }
 
-    public void setPng(String png) {
-        this.png = png;
+    public void setLiveName(String liveName) {
+        this.liveName = liveName;
+    }
+
+    public long getLiveSt() {
+        return liveSt;
+    }
+
+    public void setLiveSt(long liveSt) {
+        this.liveSt = liveSt;
     }
 
     @Override
     public String toString() {
         return "TVItem{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", png='" + png + '\'' +
+                "channelName='" + channelName + '\'' +
+                ", isLive='" + isLive + '\'' +
+                ", liveName='" + liveName + '\'' +
+                ", liveSt=" + liveSt +
                 '}';
     }
 }
