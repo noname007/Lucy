@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/lucy/lucy.iml" filepath="$PROJECT_DIR$/lucy/lucy.iml" />
       <module fileurl="file://$PROJECT_DIR$/lucyapp/lucyapp.iml" filepath="$PROJECT_DIR$/lucyapp/lucyapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/lucytv/lucytv.iml" filepath="$PROJECT_DIR$/lucytv/lucytv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/player/player.iml" filepath="$PROJECT_DIR$/player/player.iml" />
       <module fileurl="file://$PROJECT_DIR$/uitest/uitest.iml" filepath="$PROJECT_DIR$/uitest/uitest.iml" />
     </modules>
   </component>

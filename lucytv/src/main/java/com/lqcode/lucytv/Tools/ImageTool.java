@@ -1,4 +1,4 @@
-package com.lqcode.lucytv.Tools;
+package com.lqcode.lucytv.tools;
 
 /**
  * Created by Administrator on 2016/9/2.

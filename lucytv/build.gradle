@@ -34,4 +34,6 @@ dependencies {
     compile 'com.facebook.fresco:animated-webp:0.12.0'
     compile 'com.facebook.fresco:webpsupport:0.12.0'
     compile 'com.facebook.fresco:webpsupport:0.12.0'
+    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.6.1'
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.1'
 }
