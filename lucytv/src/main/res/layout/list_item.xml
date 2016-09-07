@@ -22,7 +22,7 @@
         android:paddingTop="8dp">
 
         <TextView
-            android:id="@+id/listitem_name"
+            android:id="@+id/tv_item_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/live_cctv_logo_item"
@@ -30,6 +30,24 @@
             android:textAlignment="viewEnd"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_icon"
+            android:layout_marginLeft="5dp"
+            android:text="CCTV"
+            android:textColor="#FF0000" />
+
+        <TextView
+            android:id="@+id/tv_item_current_play_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tv_item_icon"
+            android:text="当前播放的节目" />
 
     </RelativeLayout>
 

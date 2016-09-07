@@ -1,7 +1,5 @@
 package com.lqcode.lucytv.fragment;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,15 +7,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.liqiong.lucy.module.impl.LucyController;
+import com.liqiong.lucy.module.impl.LucyKernel;
 import com.lqcode.lucytv.R;
-import com.lqcode.lucytv.activity.DetilsActivity;
+import com.lqcode.lucytv.activity.PlayerActivity;
+import com.lqcode.lucytv.entity.CCTVItem;
 import com.lqcode.lucytv.entity.Entity;
 import com.lqcode.lucytv.entity.TVItem;
-import com.lqcode.lucytv.network.LiveRequest;
+import com.lqcode.lucytv.network.CCTVListRequest;
 import com.lqcode.lucytv.ui.OnRecyclerItemClick;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ import java.util.List;
  */
 public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
     private TVListAdapter mAdapter;
-    private List<TVItem> list = new ArrayList<>();
+    private List<CCTVItem> list = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,33 +46,34 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
      *
      */
     private void LiveDataRequetNet() {
-        new LiveRequest() {
+        new CCTVListRequest() {
             @Override
             public void _onSuccess(final String result) {
                 LucyController.uiHelp.post(new Runnable() {
                     @Override
                     public void run() {
-                        list.addAll(JSON.parseArray(result, TVItem.class));
+                        List<CCTVItem> cctvItems = JSON.parseArray(result, CCTVItem.class);
+                        list.addAll(cctvItems);
                         mAdapter.notifyDataSetChanged();
                     }
                 });
             }
-
             @Override
             public void _onFail(String result) {
-                LucyController.uiHelp.toast("fail!");
+
             }
         };
     }
 
     @Override
     public void onItemClick(View view, Entity data) {
-        TextView liveNameText = (TextView) view.findViewById(R.id.listitem_name);
-        liveNameText.setTransitionName("CCTVTextView");
-        TVItem item = (TVItem) data;
-        Intent mIntent = new Intent(getContext(), DetilsActivity.class);
-        mIntent.putExtra("LiveName", item.getLiveName());
-        startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation((Activity) getContext(), liveNameText, liveNameText.getTransitionName()).toBundle());
-
+//        TextView liveNameText = (TextView) view.findViewById(R.id.listitem_name);
+//        liveNameText.setTransitionName("CCTVTextView");
+//        TVItem item = (TVItem) data;
+//        Intent mIntent = new Intent(getContext(), DetilsActivity.class);
+//        mIntent.putExtra("LiveName", item.getLiveName());
+//        startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation((Activity) getContext(), liveNameText, liveNameText.getTransitionName()).toBundle());
+        Intent mIntent = new Intent(getContext(), PlayerActivity.class);
+        startActivity(mIntent);
     }
 }
