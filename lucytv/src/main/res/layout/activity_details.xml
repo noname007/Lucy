@@ -26,8 +26,8 @@
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/details_header"
                 android:layout_width="match_parent"
-                android:layout_gravity="bottom"
                 android:layout_height="match_parent"
+                android:layout_gravity="bottom"
                 fresco:actualImageScaleType="fitXY"
                 fresco:placeholderImage="@mipmap/ic_launcher" />
 
@@ -56,8 +56,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email"
+        android:clickable="true"
+        android:src="@android:drawable/ic_media_play"
         app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end" />
+        app:layout_anchorGravity="bottom|end"
+        app:rippleColor="#33728dff" />
 
 </android.support.design.widget.CoordinatorLayout>
