@@ -16,7 +16,7 @@ public class TVApplication extends Application {
     }
 
     private void initialize() {
-        LucyKernel.getInstance().initialize(this);
+
         Fresco.initialize(this);
     }
 }

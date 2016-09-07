@@ -36,6 +36,7 @@ public class DesktopActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desktop);
+        LucyKernel.getInstance().initialize(this);
 
         setupToolbar();
 
