@@ -2,13 +2,13 @@ package com.lqcode.lucytv.activity;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -38,7 +38,6 @@ public class DetailsActivity extends BaseActivity {
 
         liveName = getIntent().getStringExtra("LiveName");
         transitionTempIV = (ImageView) findViewById(R.id.details_header_transtion_temp_iv);
-        transitionTempIV.setTransitionName("CCTVTextView");
 
         handlerHeaderImage();
         playerByNet(liveName);
@@ -82,9 +81,8 @@ public class DetailsActivity extends BaseActivity {
                 CCTVPlayerUrl playerUrl = JSON.parseObject(result, CCTVPlayerUrl.class);
                 //TODO
                 if (playerUrl.getFlv_url().getFlv2().contains("cloudcdn")) {
-                    LucyController.uiHelp.toast("success!!!!!!!!!!!!!");
                     truePath = playerUrl.getFlv_url().getFlv2();
-                    floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(Color.YELLOW));
+                    floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark)));
                 } else {
                     if (requestCount < 5) {
                         playerByNet(tvName);

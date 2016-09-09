@@ -31,14 +31,6 @@
                 fresco:actualImageScaleType="fitXY"
                 fresco:placeholderImage="@mipmap/ic_launcher" />
 
-            <ImageView
-                android:id="@+id/details_header_transtion_temp_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/live_cctv_logo_item"
-                android:scaleType="centerCrop"
-                android:textAlignment="viewEnd" />
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -61,5 +53,17 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:rippleColor="#33728dff" />
+
+    <ImageView
+        android:id="@+id/details_header_transtion_temp_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:background="@mipmap/live_cctv_logo_item"
+        android:scaleType="centerCrop"
+        android:textAlignment="viewEnd"
+        android:transitionName="CCTVTextView"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end" />
 
 </android.support.design.widget.CoordinatorLayout>

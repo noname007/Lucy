@@ -29,7 +29,8 @@
             android:text="1"
             android:textAlignment="viewEnd"
             android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:transitionName="CCTVTextView" />
 
         <TextView
             android:id="@+id/tv_item_name"
