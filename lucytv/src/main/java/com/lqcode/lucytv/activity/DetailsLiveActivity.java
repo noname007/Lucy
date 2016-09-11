@@ -25,7 +25,7 @@ import com.lqcode.lucytv.tools.UiTool;
 /**
  * Created by LiQiong on 16/9/1.
  */
-public class DetailsActivity extends BaseActivity {
+public class DetailsLiveActivity extends BaseActivity {
     private String liveName;
     private ImageView transitionTempIV;
     private String truePath = null;
@@ -60,7 +60,7 @@ public class DetailsActivity extends BaseActivity {
     private void handlerHeaderImage() {
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         SimpleDraweeView headerImage = (SimpleDraweeView) findViewById(R.id.details_header);
-        headerImage.setImageURI(Constants.cctvThumnnailUrl + "?tvName=" + liveName + "&callback=" + System.currentTimeMillis());
+        headerImage.setImageURI(Constants.cctvThumbnailUrl + "?tvName=" + liveName + "&callback=" + System.currentTimeMillis());
         //图片的比例是16:9
         int imageWidth = LucyController.uiHelp.getMetrics().widthPixels;
         int imageHeight = imageWidth / 16 * 9;

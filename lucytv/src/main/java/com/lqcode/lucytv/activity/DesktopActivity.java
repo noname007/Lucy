@@ -1,29 +1,19 @@
 package com.lqcode.lucytv.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.alibaba.fastjson.JSON;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyKernel;
 import com.lqcode.lucytv.R;
-import com.lqcode.lucytv.entity.TVItem;
 import com.lqcode.lucytv.fragment.LiveFragment;
-import com.lqcode.lucytv.fragment.MoviceFragment;
-import com.lqcode.lucytv.network.DesktopRequest;
+import com.lqcode.lucytv.fragment.MovieFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +61,7 @@ public class DesktopActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new LiveFragment(), "直播");
-        adapter.addFrag(new MoviceFragment(), "电影");
+        adapter.addFrag(new MovieFragment(), "电影");
 
         viewPager.setAdapter(adapter);
     }

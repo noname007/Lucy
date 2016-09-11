@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
-import com.lqcode.lucytv.activity.DetailsActivity;
+import com.lqcode.lucytv.activity.DetailsLiveActivity;
 import com.lqcode.lucytv.entity.CCTVItem;
 import com.lqcode.lucytv.entity.Entity;
 import com.lqcode.lucytv.network.CCTVListRequest;
@@ -38,8 +38,9 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
+//        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setHasFixedSize(true);
-        LiveDataRequetNet();
+        LiveDataRequestNet();
         mAdapter = new TVListAdapter(list, this);
         recyclerView.setAdapter(mAdapter);
         return view;
@@ -48,7 +49,7 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
     /**
      *
      */
-    private void LiveDataRequetNet() {
+    private void LiveDataRequestNet() {
         new CCTVListRequest() {
             @Override
             public void _onSuccess(final String result) {
@@ -78,7 +79,7 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
         TextView liveNameText = (TextView) view.findViewById(R.id.tv_item_icon);
         liveNameText.setTransitionName("CCTVTextView");
         CCTVItem item = (CCTVItem) data;
-        Intent mIntent = new Intent(getContext(), DetailsActivity.class);
+        Intent mIntent = new Intent(getContext(), DetailsLiveActivity.class);
         mIntent.putExtra("LiveName", item.getC());
         startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation((Activity) getContext(), liveNameText, liveNameText.getTransitionName()).toBundle());
     }
