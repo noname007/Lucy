@@ -10,6 +10,6 @@ public abstract class MoviePlayerRequest extends MyRequest {
 
     public MoviePlayerRequest(String id) {
         this.url = Constants.moviePlayerUrl + id;
-        connent();
+        connect();
     }
 }

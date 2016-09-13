@@ -12,6 +12,6 @@ public abstract class CCTVPlayerUrlRequest extends MyRequest {
     public CCTVPlayerUrlRequest(String tvName) {
         this.url = Constants.cctvPlayerUrl + "?tvName=" + tvName;
         Log.e("url",this.url);
-        connent();
+        connect();
     }
 }

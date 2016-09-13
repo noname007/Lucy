@@ -9,6 +9,6 @@ import com.lqcode.lucytv.Constants;
 public abstract class DesktopRequest extends MyRequest {
     public DesktopRequest() {
         this.url = Constants.desktopUrl;
-        connent();
+        connect();
     }
 }

@@ -9,6 +9,6 @@ import com.lqcode.lucytv.Constants;
 public abstract class CCTVListRequest extends MyRequest {
     public CCTVListRequest() {
         this.url = Constants.cctvListUrl;
-        connent();
+        connect();
     }
 }

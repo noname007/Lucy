@@ -9,6 +9,6 @@ import com.lqcode.lucytv.Constants;
 public abstract class MovieListRequest extends MyRequest {
     public MovieListRequest(){
         this.url= Constants.movieListUrl;
-        connent();
+        connect();
     }
 }

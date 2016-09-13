@@ -8,6 +8,6 @@ import com.liqiong.lucy.http.MyRequest;
 public abstract class DemoRequest extends MyRequest {
     public DemoRequest() {
         this.url = "http://www.baidu.com";
-        connent();
+        connect();
     }
 }

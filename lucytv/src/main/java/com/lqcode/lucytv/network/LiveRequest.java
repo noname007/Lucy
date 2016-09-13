@@ -9,6 +9,6 @@ import com.lqcode.lucytv.Constants;
 public abstract class LiveRequest extends MyRequest {
     public LiveRequest() {
         this.url = Constants.liveUrl;
-        connent();
+        connect();
     }
 }
