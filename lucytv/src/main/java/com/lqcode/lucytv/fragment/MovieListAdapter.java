@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lqcode.lucytv.R;
-import com.lqcode.lucytv.entity.CCTVItem;
 import com.lqcode.lucytv.entity.MovieItem;
 import com.lqcode.lucytv.ui.OnRecyclerItemClick;
 
@@ -28,7 +27,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.movice_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.movie_item, viewGroup, false);
         return new MyViewHolder(view);
     }
 

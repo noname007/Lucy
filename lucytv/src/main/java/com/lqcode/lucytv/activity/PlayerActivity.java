@@ -23,6 +23,7 @@ public class PlayerActivity extends BaseActivity {
     static {
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+        IjkMediaPlayer.native_setLogLevel(1);
     }
 
     @Override

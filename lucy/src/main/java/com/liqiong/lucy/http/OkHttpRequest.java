@@ -12,20 +12,20 @@ import okhttp3.Response;
  * Created by LiQiong on 2016/8/27.16:20
  */
 public class OkHttpRequest extends ARequest {
-    private RequestCallBack callBack;
+
     private OkHttpClient client = new OkHttpClient();
 
     @Override
     public void _connect(String url, RequestCallBack callBack) {
-        this.callBack = callBack;
-        new RequestThread(url).start();
+        new RequestThread(url,callBack).start();
     }
 
     class RequestThread extends Thread {
         private String url;
-
-        public RequestThread(String url) {
+        private RequestCallBack callBack;
+        public RequestThread(String url,RequestCallBack callBack) {
             this.url = url;
+            this.callBack=callBack;
         }
 
         @Override

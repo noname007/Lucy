@@ -80,15 +80,15 @@ public class DetailsLiveActivity extends BaseActivity {
             public void _onSuccess(String result) {
                 CCTVPlayerUrl playerUrl = JSON.parseObject(result, CCTVPlayerUrl.class);
                 //TODO
-                if (playerUrl.getFlv_url().getFlv2().contains("cloudcdn")) {
+//                if (playerUrl.getFlv_url().getFlv2().contains("cloudcdn")) {
                     truePath = playerUrl.getFlv_url().getFlv2();
                     floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark)));
-                } else {
-                    if (requestCount < 5) {
-                        playerByNet(tvName);
-                        ++requestCount;
-                    }
-                }
+//                } else {
+//                    if (requestCount < 5) {
+//                        playerByNet(tvName);
+//                        ++requestCount;
+//                    }
+//                }
             }
 
             @Override

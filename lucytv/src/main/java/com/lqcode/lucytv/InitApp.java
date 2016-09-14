@@ -14,7 +14,7 @@ public class InitApp {
         LucyKernel.getInstance().initialize(context);
         //图片
         Fresco.initialize(context);
-
+        //
         initSettings();
     }
     private static void initSettings(){
