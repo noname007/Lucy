@@ -13,6 +13,7 @@ import okhttp3.Response;
  */
 public class OkHttpRequest extends ARequest {
     private RequestCallBack callBack;
+    private OkHttpClient client = new OkHttpClient();
 
     @Override
     public void _connect(String url, RequestCallBack callBack) {
@@ -29,7 +30,6 @@ public class OkHttpRequest extends ARequest {
 
         @Override
         public void run() {
-            OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder().url(url).build();
             Response response = null;
             try {

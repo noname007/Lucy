@@ -1,5 +1,7 @@
 package com.lqcode.lucytv.network;
 
+import android.util.Log;
+
 import com.liqiong.lucy.http.MyRequest;
 import com.lqcode.lucytv.Constants;
 
@@ -9,6 +11,7 @@ import com.lqcode.lucytv.Constants;
 public abstract class CCTVListRequest extends MyRequest {
     public CCTVListRequest() {
         this.url = Constants.cctvListUrl;
+        Log.e("liqiong",this.url);
         connect();
     }
 }

@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyKernel;
+import com.lqcode.lucytv.InitApp;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.fragment.LiveFragment;
 import com.lqcode.lucytv.fragment.MovieFragment;
@@ -26,8 +27,7 @@ public class DesktopActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desktop);
-        LucyKernel.getInstance().initialize(this);
-
+        InitApp.initialize(this);
         setupToolbar();
 
         setupViewPager();

@@ -12,11 +12,5 @@ public class TVApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initialize();
-    }
-
-    private void initialize() {
-
-        Fresco.initialize(this);
     }
 }
