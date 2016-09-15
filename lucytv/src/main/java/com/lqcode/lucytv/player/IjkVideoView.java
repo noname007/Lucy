@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.media.AudioManager;
+import android.media.MediaCodec;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -987,7 +988,7 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                 IjkMediaPlayer ijkMediaPlayer = null;
                 if (mUri != null) {
                     ijkMediaPlayer = new IjkMediaPlayer();
-                    ijkMediaPlayer.native_setLogLevel(IjkMediaPlayer.IJK_LOG_DEBUG);
+                    ijkMediaPlayer.native_setLogLevel(IjkMediaPlayer.IJK_LOG_DEFAULT);
 
                     if (mSettings.getUsingMediaCodec()) {
                         ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec", 1);

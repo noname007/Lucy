@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
 
 import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyKernel;
@@ -23,6 +25,7 @@ import java.util.List;
  * Created by LiQiong on 16/9/1.
  */
 public class DesktopActivity extends BaseActivity {
+    private static final String TAG=DesktopActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +65,26 @@ public class DesktopActivity extends BaseActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new LiveFragment(), "直播");
         adapter.addFrag(new MovieFragment(), "电影");
-
         viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                Log.e(TAG,"onPageScrolled position-->>"+position);
+//                Log.e(TAG,"onPageScrolled positionOffset-->>"+positionOffset);
+//                Log.e(TAG,"onPageScrolled positionOffsetPixels-->>"+positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.e(TAG,"onPageSelected position->>"+position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                Log.e(TAG,"onPageSelected state->>"+state);
+            }
+        });
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

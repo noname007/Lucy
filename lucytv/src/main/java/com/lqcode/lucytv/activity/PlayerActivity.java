@@ -1,10 +1,7 @@
 package com.lqcode.lucytv.activity;
 
-import android.content.ComponentName;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.MediaController;
 
 import com.liqiong.lucy.BaseActivity;
 import com.lqcode.lucytv.R;
