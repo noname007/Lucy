@@ -1,1 +1,1 @@
-include ':app', ':lucy', ':lucyapp', ':activityoptionsdemo', ':lucytv', ':uitest', ':player'
+include ':app', ':lucy', ':lucyapp', ':activityoptionsdemo', ':lucytv', ':uitest', ':player', ':ijkplayer-example'
