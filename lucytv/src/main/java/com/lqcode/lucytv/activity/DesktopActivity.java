@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyKernel;
@@ -47,10 +48,12 @@ public class DesktopActivity extends BaseActivity {
 
     private void setupViewPager() {
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
+
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        ImageView desktopHeader= (ImageView) findViewById(R.id.header);
+        setupViewPager(viewPager,desktopHeader);
     }
 
     private void setupToolbar() {
@@ -61,7 +64,7 @@ public class DesktopActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(ViewPager viewPager, final ImageView desktopHeader) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new LiveFragment(), "直播");
         adapter.addFrag(new MovieFragment(), "电影");
@@ -78,6 +81,12 @@ public class DesktopActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 Log.e(TAG,"onPageSelected position->>"+position);
+                if(position==0){
+                    desktopHeader.setImageDrawable(getResources().getDrawable(R.mipmap.live_cctv));
+                }else{
+                    desktopHeader.setImageDrawable(getResources().getDrawable(R.mipmap.movie_head_logo_icon));
+                }
+
             }
 
             @Override

@@ -33,7 +33,7 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setHasFixedSize(true);
         getMovieListByNet();
         recyclerView.setAdapter(adapter = new MovieListAdapter(data, this));

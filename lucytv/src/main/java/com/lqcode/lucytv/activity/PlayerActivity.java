@@ -9,6 +9,7 @@ import com.lqcode.lucytv.player.AndroidMediaController;
 import com.lqcode.lucytv.player.IMediaController;
 import com.lqcode.lucytv.player.IjkVideoView;
 
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 /**
@@ -17,6 +18,7 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 public class PlayerActivity extends BaseActivity {
     private IjkVideoView ijkVideoView;
     private IMediaController mediaController;
+
     static {
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
@@ -29,7 +31,7 @@ public class PlayerActivity extends BaseActivity {
         setContentView(R.layout.activity_player);
         ijkVideoView = (IjkVideoView) findViewById(R.id.ijk_video_view);
         String path = getIntent().getStringExtra("path");
-        mediaController=new AndroidMediaController(getContext(),false);
+        mediaController = new AndroidMediaController(getContext(), false);
         ijkVideoView.setMediaController(mediaController);
         ijkVideoView.setVideoPath(path);
         ijkVideoView.start();

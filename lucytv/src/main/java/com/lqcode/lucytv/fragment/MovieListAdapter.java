@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.entity.MovieItem;
 import com.lqcode.lucytv.ui.OnRecyclerItemClick;
@@ -33,23 +34,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 
     @Override
     public void onBindViewHolder(final MyViewHolder myViewHolder, int i) {
-//        final CCTVItem item = mListData.get(i);
-//        String shortName = item.getC().replace("cctv", "");
-//        if (shortName.length() == 1)
-//            shortName += "  ";
-//        else if (shortName.length() == 2)
-//            shortName += " ";
-//        myViewHolder.title.setText(shortName);
-//        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                onRecyclerItemClick.onItemClick(view, item);
-//            }
-//        });
-//        String tvName = item.getN();
-//        myViewHolder.name.setText(tvName + "");
-//        String currentTVName = item.getT();
-//        myViewHolder.currentName.setText(currentTVName);
         final MovieItem item = mListData.get(i);
         myViewHolder.movieName.setText(item.getName());
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +42,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
                 onRecyclerItemClick.onItemClick(view, item);
             }
         });
+        myViewHolder.moviePoster.setImageURI(item.getPng());
     }
 
     @Override
@@ -67,10 +52,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView movieName;
+        private SimpleDraweeView moviePoster;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             movieName = (TextView) itemView.findViewById(R.id.movie_name_tv);
+            moviePoster = (SimpleDraweeView) itemView.findViewById(R.id.movie_item_poster);
         }
     }
 }
