@@ -30,7 +30,10 @@ public class PlayerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
         ijkVideoView = (IjkVideoView) findViewById(R.id.ijk_video_view);
-        String path = getIntent().getStringExtra("path");
+//        String path = getIntent().getStringExtra("path");
+       String path="http://27.221.44.53/youku/677248408023182AA45B" +
+                "C53196/030020010057E50B3DC07A2D9B7D2FC09" +
+                "69596-CA93-648F-6114-FF9C02D2456B.mp4";
         mediaController = new AndroidMediaController(getContext(), false);
         ijkVideoView.setMediaController(mediaController);
         ijkVideoView.setVideoPath(path);
