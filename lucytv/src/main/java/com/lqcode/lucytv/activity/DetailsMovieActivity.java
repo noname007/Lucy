@@ -38,17 +38,17 @@ public class DetailsMovieActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-        SimpleDraweeView detailsHead = (SimpleDraweeView) findViewById(R.id.details_header);
-        detailsHead.setImageURI("res://com.lqcode.lucytv/"+R.mipmap.avengers);
-        DisplayMetrics metrics = LucyController.uiHelp.getMetrics();
-        detailsHead.setLayoutParams(new CollapsingToolbarLayout.LayoutParams(metrics.widthPixels, metrics.widthPixels / 2));
+//        SimpleDraweeView detailsHead = (SimpleDraweeView) findViewById(R.id.details_header);
+//        detailsHead.setImageURI("res://com.lqcode.lucytv/"+R.mipmap.avengers);
+//        DisplayMetrics metrics = LucyController.uiHelp.getMetrics();
+//        detailsHead.setLayoutParams(new CollapsingToolbarLayout.LayoutParams(metrics.widthPixels, metrics.widthPixels / 2));
 
 
-        FloatingActionButton floatingActionButton= (FloatingActionButton) findViewById(R.id.fab_test);
+//        FloatingActionButton floatingActionButton= (FloatingActionButton) findViewById(R.id.fab_test);
 
 
 
-        getPlayerUrlByNet();
+//        getPlayerUrlByNet();
     }
 
     private void getPlayerUrlByNet() {

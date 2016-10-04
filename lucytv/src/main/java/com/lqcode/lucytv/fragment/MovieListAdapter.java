@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.lqcode.lucytv.R;
+import com.lqcode.lucytv.entity.MovieInfo;
 import com.lqcode.lucytv.entity.MovieItem;
 import com.lqcode.lucytv.ui.OnRecyclerItemClick;
 
@@ -18,10 +19,10 @@ import java.util.List;
  */
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyViewHolder> {
 
-    private List<MovieItem> mListData;
+    private List<MovieInfo> mListData;
     private OnRecyclerItemClick onRecyclerItemClick;
 
-    public MovieListAdapter(List<MovieItem> mListData, OnRecyclerItemClick onRecyclerItemClick) {
+    public MovieListAdapter(List<MovieInfo> mListData, OnRecyclerItemClick onRecyclerItemClick) {
         this.mListData = mListData;
         this.onRecyclerItemClick = onRecyclerItemClick;
     }
@@ -34,7 +35,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 
     @Override
     public void onBindViewHolder(final MyViewHolder myViewHolder, int i) {
-        final MovieItem item = mListData.get(i);
+        final MovieInfo item = mListData.get(i);
         myViewHolder.movieName.setText(item.getName());
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +43,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
                 onRecyclerItemClick.onItemClick(view, item);
             }
         });
-        myViewHolder.moviePoster.setImageURI(item.getPng());
+        myViewHolder.moviePoster.setImageURI(item.getSmallImg());
     }
 
     @Override

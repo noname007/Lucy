@@ -15,7 +15,7 @@ public abstract class MyRequest implements RequestCallBack {
     private HashMap<String, Object> paramMap = new HashMap<>();
 
     protected void connect() {
-        LucyController.request._connect(url, this);
+        LucyController.request._connect(url,paramMap, this);
     }
 
     protected MyRequest addParam(String key, Object object) {

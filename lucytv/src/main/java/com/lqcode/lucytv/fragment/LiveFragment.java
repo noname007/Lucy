@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,6 +37,19 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
+        final SwipeRefreshLayout srl= (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+
+        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                LucyController.uiHelp.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        srl.setRefreshing(false);
+                    }
+                },1000);
+            }
+        });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
 //        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
