@@ -24,11 +24,12 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/details_header"
+                android:id="@+id/details_movie_pic"
                 android:layout_width="110dp"
                 android:layout_height="150dp"
                 android:layout_gravity="left"
-                fresco:actualImageScaleType="fitCenter"
+                fresco:actualImageScaleType="fitXY"
+                fresco:progressBarImage="@mipmap/ic_launcher"
                 fresco:placeholderImage="@mipmap/ic_launcher" />
 
             <android.support.v7.widget.Toolbar
@@ -55,7 +56,6 @@
         app:rippleColor="#33728dff" />
 
     <ImageView
-        android:visibility="gone"
         android:id="@+id/details_header_transtion_temp_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package com.lqcode.lucytv.fragment;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,8 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSON;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.activity.DetailsLiveActivity;
@@ -82,7 +85,11 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
     public void onItemClick(View view, Entity data) {
         MovieInfo item= (MovieInfo) data;
         Intent mIntent = new Intent(getContext(), DetailsMovieActivity.class);
-        mIntent.putExtra("id",item.getId());
+        Bundle mBundle=new Bundle();
+        mBundle.putSerializable("movie_info",item);
+        mIntent.putExtras(mBundle);
+        SimpleDraweeView movie_item= (SimpleDraweeView) view.findViewById(R.id.movie_item_poster);
         startActivity(mIntent);
+//        startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation(getActivity(), movie_item, movie_item.getTransitionName()).toBundle());
     }
 }

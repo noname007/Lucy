@@ -21,8 +21,8 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/movie_item_poster"
-            android:layout_width="110dp"
-            android:layout_height="150dp"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
             fresco:actualImageScaleType="fitXY"
             android:transitionName="movie_item_pic"
             fresco:progressBarImage="@mipmap/ic_launcher"

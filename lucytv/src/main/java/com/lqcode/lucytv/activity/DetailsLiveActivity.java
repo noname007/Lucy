@@ -59,7 +59,7 @@ public class DetailsLiveActivity extends BaseActivity {
 
     private void handlerHeaderImage() {
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
-        SimpleDraweeView headerImage = (SimpleDraweeView) findViewById(R.id.details_header);
+        SimpleDraweeView headerImage = (SimpleDraweeView) findViewById(R.id.details_movie_pic);
         headerImage.setImageURI(Constants.cctvThumbnailUrl + "?tvName=" + liveName + "&callback=" + System.currentTimeMillis());
         //图片的比例是16:9
         int imageWidth = LucyController.uiHelp.getMetrics().widthPixels;

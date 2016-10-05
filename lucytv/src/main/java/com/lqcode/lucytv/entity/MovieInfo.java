@@ -1,9 +1,14 @@
 package com.lqcode.lucytv.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/10/4.
  */
-public class MovieInfo extends  Entity {
+public class MovieInfo extends Entity implements Serializable {
     private int id;
     private String name;
     private String area;
@@ -93,5 +98,21 @@ public class MovieInfo extends  Entity {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    @Override
+    public String toString() {
+        return "MovieInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", area='" + area + '\'' +
+                ", duration='" + duration + '\'' +
+                ", time='" + time + '\'' +
+                ", director='" + director + '\'' +
+                ", performer='" + performer + '\'' +
+                ", annotation='" + annotation + '\'' +
+                ", smallImg='" + smallImg + '\'' +
+                ", uuid='" + uuid + '\'' +
+                '}';
     }
 }

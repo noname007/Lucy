@@ -6,11 +6,11 @@ import com.lqcode.lucytv.Constants;
 /**
  * Created by Administrator on 2016/9/11.
  */
-public abstract class MoviePlayerRequest extends MyRequest {
+public abstract class MovieRealUrlRequest extends MyRequest {
 
-    public MoviePlayerRequest(String uuid) {
-        this.url = Constants.moviePlayerUrl;
-        addParam("uuid",uuid);
+    public MovieRealUrlRequest(String url) {
+        this.url = Constants.movieRealUrl;
+        addParam("url",url);
         connect();
     }
 }

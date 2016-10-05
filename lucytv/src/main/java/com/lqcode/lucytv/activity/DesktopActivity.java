@@ -16,6 +16,7 @@ import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyKernel;
 import com.lqcode.lucytv.InitApp;
 import com.lqcode.lucytv.R;
+import com.lqcode.lucytv.fragment.AcfunFragment;
 import com.lqcode.lucytv.fragment.LiveFragment;
 import com.lqcode.lucytv.fragment.MovieFragment;
 
@@ -68,6 +69,7 @@ public class DesktopActivity extends BaseActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new LiveFragment(), "直播");
         adapter.addFrag(new MovieFragment(), "电影");
+        adapter.addFrag(new AcfunFragment(), "Acfun");
         viewPager.setAdapter(adapter);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

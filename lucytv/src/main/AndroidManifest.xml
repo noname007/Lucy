@@ -26,10 +26,8 @@
         </activity>
         <activity android:name=".activity.DetailsLiveActivity" />
         <activity android:name=".activity.DetailsMovieActivity" />
-        <activity android:name=".activity.PlayerActivity" >
-
-
-        </activity>
+        <activity android:name=".activity.PlayerActivity" />
+        <activity android:name=".activity.DetailsAcfunActivity"/>
     </application>
 
 </manifest>
