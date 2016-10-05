@@ -96,6 +96,7 @@ public class DetailsMovieActivity extends BaseActivity {
             Intent intent = new Intent(getContext(), PlayerActivity.class);
             intent.putExtra("path", url);
             startActivity(intent);
+            return;
         }
         new MovieRealUrlRequest(url) {
             @Override

@@ -20,15 +20,17 @@ import com.lqcode.lucytv.entity.Entity;
 import com.lqcode.lucytv.network.AcfunMovieListRequest;
 import com.lqcode.lucytv.ui.OnRecyclerItemClick;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/10/5.
  */
 public class AcfunFragment extends BaseFragment implements OnRecyclerItemClick {
-    private List<AcfunItem> acfunItems;
+    private List<AcfunItem> acfunItems = new ArrayList<>();
     private AcfunListAdapter adapter;
     private SwipeRefreshLayout srl;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, container, false);
@@ -41,11 +43,11 @@ public class AcfunFragment extends BaseFragment implements OnRecyclerItemClick {
                 getAcfunNet();
             }
         });
-
+        getAcfunNet();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter = new AcfunListAdapter(acfunItems, this));
-        getAcfunNet();
+
         return view;
     }
 
@@ -53,10 +55,17 @@ public class AcfunFragment extends BaseFragment implements OnRecyclerItemClick {
         new AcfunMovieListRequest() {
 
             @Override
-            public void _onSuccess(String result) {
-                acfunItems = JSON.parseObject(result, AcfunNetData.class).getData().getHits();
-                adapter.notifyDataSetChanged();
-                srl.setRefreshing(false);
+            public void _onSuccess(final String result) {
+                LucyController.uiHelp.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        acfunItems.clear();
+                        List<AcfunItem> acfunItemsTemp = JSON.parseObject(result, AcfunNetData.class).getData().getHits();
+                        acfunItems.addAll(acfunItemsTemp);
+                        adapter.notifyDataSetChanged();
+                        srl.setRefreshing(false);
+                    }
+                });
             }
 
             @Override

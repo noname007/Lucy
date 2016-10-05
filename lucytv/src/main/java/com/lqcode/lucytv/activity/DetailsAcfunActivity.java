@@ -1,9 +1,11 @@
 package com.lqcode.lucytv.activity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.liqiong.lucy.BaseActivity;
@@ -17,6 +19,7 @@ import com.lqcode.lucytv.network.MovieRealUrlRequest;
  */
 public class DetailsAcfunActivity extends BaseActivity {
     private String playerUrl;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class DetailsAcfunActivity extends BaseActivity {
         AcfunItem item = (AcfunItem) getIntent().getSerializableExtra("acfun_item");
         LucyController.uiHelp.toast(item.toString());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,9 +44,10 @@ public class DetailsAcfunActivity extends BaseActivity {
         new MovieRealUrlRequest(url) {
             @Override
             public void _onSuccess(String result) {
-                if (result != "null")
+                if (result != "null") {
                     playerUrl = result;
-                else
+                    fab.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark)));
+                } else
                     LucyController.uiHelp.toast("decode error!");
             }
 
