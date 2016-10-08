@@ -1,6 +1,5 @@
 package com.lqcode.lucytv.activity;
 
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +13,6 @@ import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.Constants;
 import com.lqcode.lucytv.R;
@@ -25,7 +23,7 @@ import com.lqcode.lucytv.tools.UiTool;
 /**
  * Created by LiQiong on 16/9/1.
  */
-public class DetailsLiveActivity extends BaseActivity {
+public class DetailsLiveActivity extends DetailsVideoActivity {
     private String liveName;
     private ImageView transitionTempIV;
     private String truePath = null;
@@ -50,9 +48,7 @@ public class DetailsLiveActivity extends BaseActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), PlayerActivity.class);
-                intent.putExtra("path", truePath);
-                startActivity(intent);
+                callPlayVideo(truePath);
             }
         });
     }
@@ -81,8 +77,8 @@ public class DetailsLiveActivity extends BaseActivity {
                 CCTVPlayerUrl playerUrl = JSON.parseObject(result, CCTVPlayerUrl.class);
                 //TODO
 //                if (playerUrl.getFlv_url().getFlv2().contains("cloudcdn")) {
-                    truePath = playerUrl.getFlv_url().getFlv2();
-                    floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark)));
+                truePath = playerUrl.getFlv_url().getFlv2();
+                floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark)));
 //                } else {
 //                    if (requestCount < 5) {
 //                        playerByNet(tvName);

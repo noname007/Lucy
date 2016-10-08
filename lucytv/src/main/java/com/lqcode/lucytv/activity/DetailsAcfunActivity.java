@@ -1,6 +1,5 @@
 package com.lqcode.lucytv.activity;
 
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +7,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.entity.AcfunItem;
@@ -17,7 +15,7 @@ import com.lqcode.lucytv.network.MovieRealUrlRequest;
 /**
  * Created by Administrator on 2016/10/5.
  */
-public class DetailsAcfunActivity extends BaseActivity {
+public class DetailsAcfunActivity extends DetailsVideoActivity {
     private String playerUrl;
     private FloatingActionButton fab;
 
@@ -32,9 +30,7 @@ public class DetailsAcfunActivity extends BaseActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), PlayerActivity.class);
-                intent.putExtra("path", playerUrl);
-                startActivity(intent);
+                callPlayVideo(playerUrl);
             }
         });
         getPlayerUrlByNet("http://www.acfun.tv/v/ac3096289?id=" + item.getVideoId());

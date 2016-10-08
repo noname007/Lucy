@@ -2,8 +2,12 @@ package com.lqcode.lucytv.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.liqiong.lucy.BaseActivity;
+import com.liqiong.lucy.http.MyRequest;
+import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.player.AndroidMediaController;
 import com.lqcode.lucytv.player.IMediaController;
@@ -31,6 +35,7 @@ public class PlayerActivity extends BaseActivity {
         setContentView(R.layout.activity_player);
         ijkVideoView = (IjkVideoView) findViewById(R.id.ijk_video_view);
         String path = getIntent().getStringExtra("path");
+        Log.e("liqiong", path);
         mediaController = new AndroidMediaController(getContext(), false);
         ijkVideoView.setMediaController(mediaController);
         ijkVideoView.setVideoPath(path);
