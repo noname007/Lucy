@@ -59,7 +59,8 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
 
     private void getMovieListByNet(int page) {
         currentPage = page;
-        Log.e("liqiong", "currentPage==>>>"+currentPage);
+        if (page == 0)
+            data.clear();
         new MovieListRequest(page) {
 
             @Override

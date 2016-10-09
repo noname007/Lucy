@@ -1,5 +1,6 @@
 package com.liqiong.lucy.http;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.liqiong.lucy.module.impl.LucyController;
@@ -30,15 +31,17 @@ public class OkHttpRequest extends ARequest {
         private RequestCallBack callBack;
 
         public RequestThread(String url, HashMap<String, Object> paramMap, RequestCallBack callBack) {
-            if (paramMap.size() > 0)
-                url += "?";
-            Iterator<Map.Entry<String, Object>> iterator = paramMap.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry<String, Object> entry = iterator.next();
-                url += entry.getKey();
-                url += "=";
-                url += entry.getValue();
-                url += "&";
+            if(paramMap!=null) {
+                if (paramMap.size() > 0)
+                    url += "?";
+                Iterator<Map.Entry<String, Object>> iterator = paramMap.entrySet().iterator();
+                while (iterator.hasNext()) {
+                    Map.Entry<String, Object> entry = iterator.next();
+                    url += entry.getKey();
+                    url += "=";
+                    url += entry.getValue();
+                    url += "&";
+                }
             }
             this.url = url;
             this.callBack = callBack;
@@ -46,7 +49,7 @@ public class OkHttpRequest extends ARequest {
 
         @Override
         public void run() {
-            Log.e("liqiong",this.url);
+            Log.e("liqiong", this.url);
             Request request = new Request.Builder().url(url).build();
             Response response = null;
             try {

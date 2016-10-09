@@ -23,14 +23,28 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/details_movie_pic"
-                android:layout_width="110dp"
-                android:layout_height="150dp"
-                android:layout_gravity="left"
-                fresco:actualImageScaleType="fitXY"
-                fresco:progressBarImage="@mipmap/ic_launcher"
-                fresco:placeholderImage="@mipmap/ic_launcher" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/details_movie_pic"
+                    android:layout_width="110dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="left"
+                    fresco:actualImageScaleType="fitXY"
+                    fresco:placeholderImage="@mipmap/ic_launcher"
+                    fresco:progressBarImage="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:padding="5dp"
+                    android:id="@+id/title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/details_movie_pic"
+                    android:text="title"
+                    android:textSize="14sp" />
+            </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

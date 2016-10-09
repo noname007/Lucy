@@ -12,14 +12,31 @@ public abstract class MyRequest implements RequestCallBack {
 
     protected String url;
     protected String test;
-    private HashMap<String, Object> paramMap = new HashMap<>();
+    protected boolean isAddBaseParam = true;
+    private HashMap<String, Object> paramMap;
 
     protected void connect() {
-        LucyController.request._connect(url,paramMap, this);
+        if (isAddBaseParam)
+            addBaseParam();
+        LucyController.request._connect(url, paramMap, this);
     }
 
     protected MyRequest addParam(String key, Object object) {
+        if (paramMap == null)
+            paramMap = new HashMap<>();
         paramMap.put(key, object);
+        return this;
+    }
+
+    private MyRequest addBaseParam() {
+        if (paramMap == null)
+            paramMap = new HashMap<>();
+
+        long currentTimeMillis = System.currentTimeMillis();
+        paramMap.put("time", currentTimeMillis);
+        long time_encode = currentTimeMillis * 6 + 1991 + 327 + 511 + 2537;
+        paramMap.put("t_encode", time_encode);
+
         return this;
     }
 }

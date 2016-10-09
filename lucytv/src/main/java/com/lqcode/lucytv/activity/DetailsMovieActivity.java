@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -17,6 +18,8 @@ import com.lqcode.lucytv.entity.MovieInfo;
 import com.lqcode.lucytv.entity.MovieUrl;
 import com.lqcode.lucytv.network.MoviePlayerRequest;
 import com.lqcode.lucytv.network.MovieRealUrlRequest;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -32,6 +35,13 @@ public class DetailsMovieActivity extends DetailsVideoActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         MovieInfo movieInfo = (MovieInfo) getIntent().getSerializableExtra("movie_info");
+        TextView annotationTV = (TextView) findViewById(R.id.annotation_tv);
+        annotationTV.setText(movieInfo.getAnnotation());
+        TextView title = (TextView) findViewById(R.id.title_tv);
+        title.setText(movieInfo.getName() + "\n" + movieInfo.getArea() + "\n" +
+                movieInfo.getDuration() + "\n" + movieInfo.getTime() + "\n" +
+                movieInfo.getDirector() + "\n" + movieInfo.getPerformer());
+
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

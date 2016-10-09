@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -61,7 +62,7 @@ public class DetailsLiveActivity extends DetailsVideoActivity {
         int imageWidth = LucyController.uiHelp.getMetrics().widthPixels;
         int imageHeight = imageWidth / 16 * 9;
         int logoHeight = UiTool.getSizeByView(transitionTempIV).getHeight() * 2;
-        CollapsingToolbarLayout.LayoutParams params = new CollapsingToolbarLayout.LayoutParams(imageWidth, imageHeight);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(imageWidth, imageHeight);
         params.setMargins(0, logoHeight, 0, 0);
         headerImage.setLayoutParams(params);
         CoordinatorLayout.LayoutParams aparams = new CoordinatorLayout.LayoutParams(imageWidth, imageHeight + logoHeight);

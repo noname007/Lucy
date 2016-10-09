@@ -9,6 +9,7 @@ import com.lqcode.lucytv.Constants;
 public abstract class AcfunMovieListRequest extends MyRequest {
     public AcfunMovieListRequest() {
         this.url = Constants.acfunUrl;
+        this.isAddBaseParam = false;
         connect();
     }
 }
