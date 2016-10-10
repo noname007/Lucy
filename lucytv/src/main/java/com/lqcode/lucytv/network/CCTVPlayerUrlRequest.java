@@ -10,8 +10,9 @@ import com.lqcode.lucytv.Constants;
  */
 public abstract class CCTVPlayerUrlRequest extends MyRequest {
     public CCTVPlayerUrlRequest(String tvName) {
-        this.url = Constants.cctvPlayerUrl + "?tvName=" + tvName;
-        Log.e("url",this.url);
+        addParam("tvName", tvName);
+        this.url = Constants.cctvPlayerUrl;
+        Log.e("url", this.url);
         connect();
     }
 }
