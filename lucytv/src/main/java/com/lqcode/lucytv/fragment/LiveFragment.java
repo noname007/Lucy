@@ -37,17 +37,12 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
-        final SwipeRefreshLayout srl= (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        final SwipeRefreshLayout srl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
 
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                LucyController.uiHelp.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        srl.setRefreshing(false);
-                    }
-                },1000);
+                LiveDataRequestNet();
             }
         });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -64,6 +59,7 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
      *
      */
     private void LiveDataRequestNet() {
+        list.clear();
         new CCTVListRequest() {
             @Override
             public void _onSuccess(final String result) {
@@ -93,8 +89,11 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
         TextView liveNameText = (TextView) view.findViewById(R.id.tv_item_icon);
         liveNameText.setTransitionName("CCTVTextView");
         CCTVItem item = (CCTVItem) data;
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("cctv_item",item);
         Intent mIntent = new Intent(getContext(), DetailsLiveActivity.class);
-        mIntent.putExtra("LiveName", item.getC());
+//        mIntent.putExtra("LiveName", item.getC());
+        mIntent.putExtras(mBundle);
         startActivity(mIntent, ActivityOptions.makeSceneTransitionAnimation((Activity) getContext(), liveNameText, liveNameText.getTransitionName()).toBundle());
     }
 }

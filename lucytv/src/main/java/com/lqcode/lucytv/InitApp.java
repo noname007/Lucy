@@ -17,11 +17,14 @@ public class InitApp {
         //
         initSettings();
     }
-    private static void initSettings(){
-        TVSettings settings= TVSettings.getInstance();
+
+    private static void initSettings() {
+        TVSettings settings = TVSettings.getInstance();
         settings.setServerHead("http");
-        settings.setServerIP("192.168.1.104");
-        settings.setServerName("LucyTV");
-        settings.setServerPort(":8080");
+        settings.setServerIP("115.28.66.229");
+//        settings.setServerName("LucyTV");
+//        settings.setServerPort(":8080");
+        settings.setServerName("");
+        settings.setServerPort("");
     }
 }

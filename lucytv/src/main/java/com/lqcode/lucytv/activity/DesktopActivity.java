@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.VideoView;
 
 import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.module.impl.LucyKernel;

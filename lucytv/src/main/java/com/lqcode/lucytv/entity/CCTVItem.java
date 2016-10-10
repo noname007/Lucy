@@ -1,9 +1,11 @@
 package com.lqcode.lucytv.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/9/7.
  */
-public class CCTVItem extends Entity {
+public class CCTVItem extends Entity implements Serializable{
     //当前播放的节目
     private String t;
     //播放时间

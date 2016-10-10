@@ -4,19 +4,20 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.Constants;
 import com.lqcode.lucytv.R;
+import com.lqcode.lucytv.entity.CCTVItem;
 import com.lqcode.lucytv.entity.CCTVPlayerUrl;
 import com.lqcode.lucytv.network.CCTVPlayerUrlRequest;
 import com.lqcode.lucytv.tools.UiTool;
@@ -25,7 +26,7 @@ import com.lqcode.lucytv.tools.UiTool;
  * Created by LiQiong on 16/9/1.
  */
 public class DetailsLiveActivity extends DetailsVideoActivity {
-    private String liveName;
+    private CCTVItem cctvItem;
     private ImageView transitionTempIV;
     private String truePath = null;
     private FloatingActionButton floatingActionButton;
@@ -35,11 +36,12 @@ public class DetailsLiveActivity extends DetailsVideoActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        liveName = getIntent().getStringExtra("LiveName");
+        cctvItem = (CCTVItem) getIntent().getSerializableExtra("cctv_item");
         transitionTempIV = (ImageView) findViewById(R.id.details_header_transtion_temp_iv);
-
-        handlerHeaderImage();
-        playerByNet(liveName);
+        TextView title_tv= (TextView) findViewById(R.id.title_tv);
+        title_tv.setText(cctvItem.getN()+"\n"+cctvItem.getT()+"\n"+cctvItem.getS());
+//        handlerHeaderImage();
+        playerByNet(cctvItem.getC());
         playerSetting();
     }
 
@@ -57,7 +59,7 @@ public class DetailsLiveActivity extends DetailsVideoActivity {
     private void handlerHeaderImage() {
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         SimpleDraweeView headerImage = (SimpleDraweeView) findViewById(R.id.details_movie_pic);
-        headerImage.setImageURI(Constants.cctvThumbnailUrl + "?tvName=" + liveName + "&callback=" + System.currentTimeMillis());
+        headerImage.setImageURI(Constants.cctvThumbnailUrl + "?tvName=" + cctvItem + "&callback=" + System.currentTimeMillis());
         //图片的比例是16:9
         int imageWidth = LucyController.uiHelp.getMetrics().widthPixels;
         int imageHeight = imageWidth / 16 * 9;

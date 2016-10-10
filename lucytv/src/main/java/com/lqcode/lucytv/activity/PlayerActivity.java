@@ -40,6 +40,16 @@ public class PlayerActivity extends BaseActivity {
         ijkVideoView.setMediaController(mediaController);
         ijkVideoView.setVideoPath(path);
         ijkVideoView.start();
+        ijkVideoView.setOnErrorListener(new IMediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(IMediaPlayer iMediaPlayer, int i, int i1) {
+                Log.e("error",i+"==="+i1);
+                if(i==-10000){
+                    ijkVideoView.resume();
+                }
+                return true;
+            }
+        });
     }
 
     @Override
