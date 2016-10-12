@@ -9,9 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/activityoptionsdemo" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/ijkplayer-example" />
             <option value="$PROJECT_DIR$/lucy" />
             <option value="$PROJECT_DIR$/lucyapp" />
             <option value="$PROJECT_DIR$/lucytv" />
