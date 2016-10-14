@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -33,7 +34,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        Log.e("liqiong", "i==>>>" + i);
         if (i == TYPE_FOOTER) {
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_footer, viewGroup, false);
             return new FooterViewHolder(view);
@@ -57,7 +57,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
             });
             myViewHolder.moviePoster.setImageURI(item.getSmallImg());
         } else if (itemType == TYPE_FOOTER) {
-            ((FooterViewHolder) myViewHolder).footerText.setOnClickListener(new View.OnClickListener() {
+            ((FooterViewHolder) myViewHolder).footer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     onRecyclerItemClick.onItemClick(view, new Entity());
@@ -92,11 +92,11 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
     }
 
     class FooterViewHolder extends MyViewHolder {
-        private TextView footerText;
+        private RelativeLayout footer;
 
         public FooterViewHolder(View itemView) {
             super(itemView);
-            footerText = (TextView) itemView.findViewById(R.id.footer_tv);
+            footer = (RelativeLayout) itemView.findViewById(R.id.footer_rl);
         }
     }
 }

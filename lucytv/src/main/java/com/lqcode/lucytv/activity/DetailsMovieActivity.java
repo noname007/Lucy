@@ -16,6 +16,7 @@ import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.entity.MovieInfo;
 import com.lqcode.lucytv.entity.MovieUrl;
+import com.lqcode.lucytv.entity.RealUrlsEntity;
 import com.lqcode.lucytv.network.MoviePlayerRequest;
 import com.lqcode.lucytv.network.MovieRealUrlRequest;
 
@@ -58,7 +59,6 @@ public class DetailsMovieActivity extends DetailsVideoActivity {
                         getPlayerUrlByNet(mString[i]);
                     }
                 }).show();
-
             }
         });
         SimpleDraweeView detailsMoviePic = (SimpleDraweeView) findViewById(R.id.details_movie_pic);
@@ -101,6 +101,12 @@ public class DetailsMovieActivity extends DetailsVideoActivity {
             return;
         }
         new MovieRealUrlRequest(url) {
+
+            @Override
+            public void onSuccess(List<RealUrlsEntity> urls) {
+
+            }
+
             @Override
             public void _onSuccess(String result) {
                 if (result != "null") {

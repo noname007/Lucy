@@ -85,7 +85,7 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
 
     @Override
     public void onItemClick(View view, Entity data) {
-        if (view.getId() == R.id.footer_tv) {
+        if (view.getId() == R.id.footer_rl) {
             getMovieListByNet(++currentPage);
         } else {
             MovieInfo item = (MovieInfo) data;

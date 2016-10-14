@@ -1,9 +1,13 @@
 package com.lqcode.lucytv.activity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.liqiong.lucy.BaseActivity;
 import com.liqiong.lucy.http.MyRequest;
@@ -24,14 +28,18 @@ public class PlayerActivity extends BaseActivity {
     private IjkVideoView ijkVideoView;
     private IMediaController mediaController;
 
-    static {
-
-    }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        View mView=View.inflate(this,R.layout.activity_player,null);
+        mView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
+        setContentView(mView);
+        Log.e("PlayerActivity","PlayerActivity--OnCreate");
+
         Settings mSettings=new Settings(this);
 
         IjkMediaPlayer.loadLibrariesOnce(null);
@@ -73,4 +81,10 @@ public class PlayerActivity extends BaseActivity {
             IjkMediaPlayer.native_profileEnd();
         }
     }
+
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+////        super.onConfigurationChanged(newConfig);
+//
+//    }
 }

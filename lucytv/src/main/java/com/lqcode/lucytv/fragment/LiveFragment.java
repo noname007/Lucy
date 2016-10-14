@@ -32,12 +32,13 @@ import java.util.List;
 public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
     private TVListAdapter mAdapter;
     private List<CCTVItem> list = new ArrayList<>();
+    private SwipeRefreshLayout srl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
-        final SwipeRefreshLayout srl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        srl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
 
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -69,13 +70,14 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
                         List<CCTVItem> cctvItems = JSON.parseArray(result, CCTVItem.class);
                         list.addAll(cctvItems);
                         mAdapter.notifyDataSetChanged();
+                        srl.setRefreshing(false);
                     }
                 });
             }
 
             @Override
             public void _onFail(String result) {
-
+                srl.setRefreshing(false);
             }
         };
     }
@@ -90,7 +92,7 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
         liveNameText.setTransitionName("CCTVTextView");
         CCTVItem item = (CCTVItem) data;
         Bundle mBundle = new Bundle();
-        mBundle.putSerializable("cctv_item",item);
+        mBundle.putSerializable("cctv_item", item);
         Intent mIntent = new Intent(getContext(), DetailsLiveActivity.class);
 //        mIntent.putExtra("LiveName", item.getC());
         mIntent.putExtras(mBundle);
