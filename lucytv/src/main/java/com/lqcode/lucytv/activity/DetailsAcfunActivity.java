@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
 import com.lqcode.lucytv.entity.AcfunItem;
 import com.lqcode.lucytv.entity.RealUrlsEntity;
@@ -47,7 +46,7 @@ public class DetailsAcfunActivity extends DetailsVideoActivity {
                         setTitle("播放列表").setItems(mString, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        callPlayVideo(urlsEntityList.get(i).getSrc()[0]);
+                        callPlayVideo(urlsEntityList.get(i));
                     }
                 }).show();
             }

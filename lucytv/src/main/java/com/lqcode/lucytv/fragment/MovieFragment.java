@@ -1,28 +1,27 @@
 package com.lqcode.lucytv.fragment;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
-import com.lqcode.lucytv.activity.DetailsLiveActivity;
 import com.lqcode.lucytv.activity.DetailsMovieActivity;
 import com.lqcode.lucytv.entity.Entity;
 import com.lqcode.lucytv.entity.MovieInfo;
-import com.lqcode.lucytv.entity.MovieItem;
 import com.lqcode.lucytv.network.MovieListRequest;
+import com.lqcode.lucytv.network.MovieSearchRequest;
 import com.lqcode.lucytv.ui.OnRecyclerItemClick;
 
 import java.util.ArrayList;
@@ -36,6 +35,21 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
     private MovieListAdapter adapter = null;
     private SwipeRefreshLayout srl;
     private int currentPage = 0;
+
+    public MovieFragment() {
+        super();
+    }
+
+    public MovieFragment(final Button searchBtn, final EditText searchEt) {
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(searchEt.getText()))
+                    getMovieSearchLikeName(searchEt.getText().toString());
+            }
+        });
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -82,6 +96,31 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
             }
         };
     }
+
+    private void getMovieSearchLikeName(String likeName) {
+        new MovieSearchRequest(likeName) {
+
+            @Override
+            public void _onSuccess(final String result) {
+                LucyController.uiHelp.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        data.clear();
+                        List<MovieInfo> netData = JSON.parseArray(result, MovieInfo.class);
+                        data.addAll(netData);
+                        adapter.notifyDataSetChanged();
+                        srl.setRefreshing(false);
+                    }
+                });
+            }
+
+            @Override
+            public void _onFail(String result) {
+
+            }
+        };
+    }
+
 
     @Override
     public void onItemClick(View view, Entity data) {

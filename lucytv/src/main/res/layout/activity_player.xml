@@ -7,5 +7,43 @@
         android:id="@+id/ijk_video_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"></com.lqcode.lucytv.player.IjkVideoView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#66000000"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/play_pause_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="play" />
+
+
+        <TextView
+            android:id="@+id/movie_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="100:199"
+            android:textColor="#FFFFFF" />
+
+
+        <SeekBar
+            android:id="@+id/player_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/movie_time_tv"
+            android:layout_toRightOf="@id/play_pause_btn"
+            android:maxHeight="1dip"
+            android:progressDrawable="@drawable/player_seekbar"
+            android:secondaryProgressTint="#FFFFFF" />
+    </RelativeLayout>
 </RelativeLayout>

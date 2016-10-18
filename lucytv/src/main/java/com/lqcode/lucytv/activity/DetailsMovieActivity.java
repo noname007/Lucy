@@ -103,17 +103,20 @@ public class DetailsMovieActivity extends DetailsVideoActivity {
         new MovieRealUrlRequest(url) {
 
             @Override
-            public void onSuccess(List<RealUrlsEntity> urls) {
+            public void onSuccess(final List<RealUrlsEntity> urlsEntityList) {
 
-            }
-
-            @Override
-            public void _onSuccess(String result) {
-                if (result != "null") {
-                    callPlayVideo(result);
-                } else {
-                    LucyController.uiHelp.toast("decode error!");
+                final String[] mString = new String[urlsEntityList.size()];
+                for (int i = 0; i < urlsEntityList.size(); i++) {
+                    mString[i] = urlsEntityList.get(i).getVideo_profile();
                 }
+                new AlertDialog.Builder(getContext(), R.style.Theme_AppCompat_Light_Dialog_Alert).
+                        setTitle("选择清晰度").setItems(mString, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        callPlayVideo(urlsEntityList.get(i));
+                    }
+                }).show();
+//                    callPlayVideo(result);
             }
 
             @Override

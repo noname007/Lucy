@@ -1,21 +1,31 @@
 package com.lqcode.lucytv.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/10/14.
  */
 
-public class RealUrlsEntity {
-    private int size;
+public class RealUrlsEntity implements Serializable {
+    private long size;
     private String[] src;
     private String video_profile;
     private String container;
-    
+    private int time;
 
-    public int getSize() {
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public long getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(long size) {
         this.size = size;
     }
 

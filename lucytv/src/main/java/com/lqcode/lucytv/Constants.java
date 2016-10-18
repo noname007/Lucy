@@ -14,6 +14,6 @@ public final class Constants {
     public static final String moviePlayerUrl = serverPrefix + "VideoUrlServlet";
     public static final String movieRealUrl= serverPrefix + "VideoRealUrlsServlet";
     public static final String acfunUrl="http://www.acfun.tv/index/change?channelId=60&page=1";
-
+    public static final String movieSearchUrl=serverPrefix+"VideoSearchServlet";
 
 }

@@ -6,6 +6,8 @@ import android.util.Log;
 import com.liqiong.lucy.module.impl.LucyController;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -31,7 +33,7 @@ public class OkHttpRequest extends ARequest {
         private RequestCallBack callBack;
 
         public RequestThread(String url, HashMap<String, Object> paramMap, RequestCallBack callBack) {
-            if(paramMap!=null) {
+            if (paramMap != null) {
                 if (paramMap.size() > 0)
                     url += "?";
                 Iterator<Map.Entry<String, Object>> iterator = paramMap.entrySet().iterator();
@@ -40,6 +42,12 @@ public class OkHttpRequest extends ARequest {
                     url += entry.getKey();
                     url += "=";
                     url += entry.getValue();
+
+//                    try {
+//                        url += URLEncoder.encode(entry.getValue().toString(), "UTF-8");
+//                    } catch (UnsupportedEncodingException e) {
+//                        e.printStackTrace();
+//                    }
                     url += "&";
                 }
             }

@@ -22,6 +22,7 @@ public class InitApp {
         TVSettings settings = TVSettings.getInstance();
         settings.setServerHead("http");
         settings.setServerIP("115.28.66.229");
+//        settings.setServerIP("192.168.1.104");
 //        settings.setServerName("LucyTV");
 //        settings.setServerPort(":8080");
         settings.setServerName("");

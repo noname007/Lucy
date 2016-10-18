@@ -28,6 +28,11 @@ import java.util.ArrayList;
 
 public class AndroidMediaController extends MediaController implements IMediaController {
     private ActionBar mActionBar;
+    private OnHideOrShowListener onHideOrShowListener;
+
+    public void addHideOrShowListener(OnHideOrShowListener hideOrShowListener) {
+        this.onHideOrShowListener = hideOrShowListener;
+    }
 
     public AndroidMediaController(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -59,13 +64,18 @@ public class AndroidMediaController extends MediaController implements IMediaCon
     @Override
     public void show() {
         super.show();
+        if (onHideOrShowListener != null)
+            onHideOrShowListener.hideOrShow(0);
         if (mActionBar != null)
             mActionBar.show();
     }
 
     @Override
     public void hide() {
+
         super.hide();
+        if (onHideOrShowListener != null)
+            onHideOrShowListener.hideOrShow(1);
         if (mActionBar != null)
             mActionBar.hide();
         for (View view : mShowOnceArray)
@@ -83,4 +93,10 @@ public class AndroidMediaController extends MediaController implements IMediaCon
         view.setVisibility(View.VISIBLE);
         show();
     }
+
+    public interface OnHideOrShowListener {
+        void hideOrShow(int hide);
+    }
 }
+
+
