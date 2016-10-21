@@ -13,6 +13,7 @@ import com.lqcode.lucytv.entity.RealUrlsEntity;
  * Created by Administrator on 2016/10/8.
  */
 public class DetailsVideoActivity extends BaseActivity {
+
     public void callPlayVideo(String playUrl) {
         if (!TextUtils.isEmpty(playUrl) && playUrl.contains("http://")) {
             Intent intent = new Intent(getContext(), PlayerActivity.class);

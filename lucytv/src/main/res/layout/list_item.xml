@@ -21,22 +21,32 @@
         android:paddingRight="16dp"
         android:paddingTop="8dp">
 
-        <TextView
-            android:id="@+id/tv_item_icon"
+        <LinearLayout
+            android:id="@+id/tv_item_icon_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/live_cctv_logo_item"
-            android:text="1"
-            android:textAlignment="viewEnd"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:transitionName="CCTVTextView" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_item_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:minWidth="38dp"
+                android:minHeight="30dp"
+                android:text="1"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:transitionName="CCTVTextView" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_item_icon"
+            android:layout_below="@id/tv_item_icon_layout"
             android:layout_marginLeft="5dp"
             android:text="CCTV"
             android:textColor="#FF0000" />
@@ -46,8 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/tv_item_icon"
+            android:layout_toRightOf="@id/tv_item_icon_layout"
             android:text="当前播放的节目" />
 
     </RelativeLayout>

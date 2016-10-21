@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -61,14 +62,17 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
      */
     private void LiveDataRequestNet() {
         list.clear();
+
         new CCTVListRequest() {
             @Override
             public void _onSuccess(final String result) {
                 LucyController.uiHelp.post(new Runnable() {
                     @Override
                     public void run() {
+                        Log.e("LiveFragment","result-----------"+result);
                         List<CCTVItem> cctvItems = JSON.parseArray(result, CCTVItem.class);
                         list.addAll(cctvItems);
+
                         mAdapter.notifyDataSetChanged();
                         srl.setRefreshing(false);
                     }

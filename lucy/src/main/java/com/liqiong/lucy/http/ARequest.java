@@ -22,7 +22,7 @@ public abstract class ARequest extends Module {
 }
 
 interface RequestCallBack {
-    public void _onSuccess(String result);
+    void _onSuccess(String result);
 
-    public void _onFail(String result);
+    void _onFail(String result);
 }

@@ -93,7 +93,6 @@ public class PlayerActivity_back extends BaseActivity {
         ijkVideoView.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(IMediaPlayer iMediaPlayer) {
-
                 if (isSegmentation) {
                     seekBar.setMax(entity.getTime());
                 } else {

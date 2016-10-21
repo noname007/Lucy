@@ -7,6 +7,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -77,6 +78,7 @@ public class DetailsLiveActivity extends DetailsVideoActivity {
         new CCTVPlayerUrlRequest(tvName) {
             @Override
             public void _onSuccess(String result) {
+                Log.e("LiveDeatil","LiveDeatil_result------------"+result);
                 CCTVPlayerUrl playerUrl = JSON.parseObject(result, CCTVPlayerUrl.class);
                 //TODO
 //                if (playerUrl.getFlv_url().getFlv2().contains("cloudcdn")) {

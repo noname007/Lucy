@@ -1,5 +1,7 @@
 package com.liqiong.lucy.http;
 
+import android.util.Log;
+
 import com.liqiong.lucy.annotation.Autowired;
 import com.liqiong.lucy.module.impl.LucyController;
 
