@@ -114,6 +114,12 @@ public class PlayerActivity extends BaseActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        ijkVideoView.start();
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         onStop();

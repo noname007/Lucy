@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -41,11 +43,12 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
         super();
     }
 
-    public MovieFragment(final Button searchBtn, final EditText searchEt) {
+    public MovieFragment(final ImageView searchBtn, final EditText searchEt) {
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(),"搜索电影",Toast.LENGTH_SHORT).show();
                 if (!TextUtils.isEmpty(searchEt.getText()))
                     getMovieSearchLikeName(searchEt.getText().toString());
             }

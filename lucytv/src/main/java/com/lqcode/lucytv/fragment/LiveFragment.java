@@ -9,6 +9,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -40,6 +41,8 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
         View view = inflater.inflate(R.layout.fragment, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
         srl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        srl.setColorSchemeResources(R.color.colorPrimaryDark,R.color.colorPrimaryDark, R.color.colorPrimaryDark,
+                        R.color.colorPrimaryDark);
 
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -69,7 +72,7 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
                 LucyController.uiHelp.post(new Runnable() {
                     @Override
                     public void run() {
-                        Log.e("LiveFragment","result-----------"+result);
+                        Log.e("LiveFragment", "result-----------" + result);
                         List<CCTVItem> cctvItems = JSON.parseArray(result, CCTVItem.class);
                         list.addAll(cctvItems);
 

@@ -28,7 +28,9 @@
         <activity android:name=".activity.DetailsMovieActivity" />
         <activity
             android:name=".activity.PlayerActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"
+            ></activity>
         <activity android:name=".activity.DetailsAcfunActivity" />
     </application>
 

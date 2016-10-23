@@ -17,8 +17,8 @@
         android:layout_height="?attr/listPreferredItemHeight"
         android:gravity="center_vertical"
         android:paddingBottom="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:paddingTop="8dp">
 
         <LinearLayout
@@ -48,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_item_icon_layout"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
             android:text="CCTV"
             android:textColor="#FF0000" />
 
@@ -55,7 +56,7 @@
             android:id="@+id/tv_item_current_play_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/tv_item_icon_layout"
             android:text="当前播放的节目" />
 

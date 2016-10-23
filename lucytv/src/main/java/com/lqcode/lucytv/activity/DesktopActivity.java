@@ -31,6 +31,8 @@ import java.util.List;
  */
 public class DesktopActivity extends BaseActivity {
     private static final String TAG = DesktopActivity.class.getSimpleName();
+    private ImageView ivSearch;
+    private EditText edSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +40,16 @@ public class DesktopActivity extends BaseActivity {
         setContentView(R.layout.activity_desktop);
         InitApp.initialize(this);
         setupToolbar();
-
-        setupViewPager();
-
         setupCollapsingToolbar();
+        setupViewPager();
     }
 
     private void setupCollapsingToolbar() {
         final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(
                 R.id.collapse_toolbar);
-
         collapsingToolbar.setTitleEnabled(false);
+        ivSearch = (ImageView) findViewById(R.id.search_movie_btn);
+        edSearch = (EditText) findViewById(R.id.search_movie_et);
     }
 
     private void setupViewPager() {
@@ -72,7 +73,7 @@ public class DesktopActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager, final ImageView desktopHeader) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new LiveFragment(), "直播");
-        adapter.addFrag(new MovieFragment((Button) findViewById(R.id.search_movie_btn), (EditText) findViewById(R.id.search_movie_et)), "电影");
+        adapter.addFrag(new MovieFragment(ivSearch, edSearch), "电影");
         adapter.addFrag(new AcfunFragment(), "Acfun");
         viewPager.setAdapter(adapter);
 
@@ -89,7 +90,12 @@ public class DesktopActivity extends BaseActivity {
                 Log.e(TAG, "onPageSelected position->>" + position);
                 if (position == 0) {
                     desktopHeader.setImageDrawable(getResources().getDrawable(R.mipmap.live_cctv));
-                } else {
+                    hideSearch();
+                } else if(position == 1){
+                    showSearch();
+                    desktopHeader.setImageDrawable(getResources().getDrawable(R.mipmap.movie_head_logo_icon));
+                }else {
+                    hideSearch();
                     desktopHeader.setImageDrawable(getResources().getDrawable(R.mipmap.movie_head_logo_icon));
                 }
             }
@@ -129,6 +135,16 @@ public class DesktopActivity extends BaseActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    private void showSearch(){
+        ivSearch.setVisibility(View.VISIBLE);
+        edSearch.setVisibility(View.VISIBLE);
+    }
+
+    private void hideSearch(){
+        ivSearch.setVisibility(View.GONE);
+        edSearch.setVisibility(View.GONE);
     }
 }
 
