@@ -8,12 +8,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -48,9 +51,18 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"搜索电影",Toast.LENGTH_SHORT).show();
                 if (!TextUtils.isEmpty(searchEt.getText()))
                     getMovieSearchLikeName(searchEt.getText().toString());
+            }
+        });
+        searchEt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    if (!TextUtils.isEmpty(searchEt.getText()))
+                        getMovieSearchLikeName(searchEt.getText().toString());
+                    return true;
+                }
+                return false;
             }
         });
     }
@@ -110,7 +122,7 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
                     @Override
                     public void run() {
                         data.clear();
-                        Log.e("MovieFragment","result-----------"+result);
+                        Log.e("MovieFragment", "result-----------" + result);
                         List<MovieInfo> netData = JSON.parseArray(result, MovieInfo.class);
                         data.addAll(netData);
                         adapter.notifyDataSetChanged();

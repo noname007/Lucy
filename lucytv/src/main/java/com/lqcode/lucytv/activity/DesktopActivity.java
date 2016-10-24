@@ -1,5 +1,6 @@
 package com.lqcode.lucytv.activity;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
@@ -10,6 +11,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -91,10 +96,10 @@ public class DesktopActivity extends BaseActivity {
                 if (position == 0) {
                     desktopHeader.setImageDrawable(getResources().getDrawable(R.mipmap.live_cctv));
                     hideSearch();
-                } else if(position == 1){
+                } else if (position == 1) {
                     showSearch();
                     desktopHeader.setImageDrawable(getResources().getDrawable(R.mipmap.movie_head_logo_icon));
-                }else {
+                } else {
                     hideSearch();
                     desktopHeader.setImageDrawable(getResources().getDrawable(R.mipmap.movie_head_logo_icon));
                 }
@@ -137,12 +142,24 @@ public class DesktopActivity extends BaseActivity {
         }
     }
 
-    private void showSearch(){
+    private void showSearch() {
+//        TranslateAnimation mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+//                Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+//                -1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+//        mShowAction.setDuration(500);
+        AlphaAnimation mShowAction = new AlphaAnimation(0,1);
+        mShowAction.setDuration(500);
+        ivSearch.startAnimation(mShowAction);
+        edSearch.startAnimation(mShowAction);
         ivSearch.setVisibility(View.VISIBLE);
         edSearch.setVisibility(View.VISIBLE);
     }
 
-    private void hideSearch(){
+    private void hideSearch() {
+        AlphaAnimation mHiddenAction = new AlphaAnimation(1,0);
+        mHiddenAction.setDuration(500);
+        ivSearch.startAnimation(mHiddenAction);
+        edSearch.startAnimation(mHiddenAction);
         ivSearch.setVisibility(View.GONE);
         edSearch.setVisibility(View.GONE);
     }

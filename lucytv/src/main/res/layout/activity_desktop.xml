@@ -55,7 +55,6 @@
 
             <EditText
                 android:id="@+id/search_movie_et"
-                style="@android:style/Widget.Material.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="100dp"
@@ -68,6 +67,8 @@
                 android:textColorHint="@color/text_hint"
                 android:textSize="14sp"
                 android:visibility="gone"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
                 />
 
             <ImageView
@@ -81,7 +82,6 @@
                 android:visibility="gone"
                 />
         </android.support.design.widget.CollapsingToolbarLayout>
-
     </android.support.design.widget.AppBarLayout>
 
 </android.support.design.widget.CoordinatorLayout>
