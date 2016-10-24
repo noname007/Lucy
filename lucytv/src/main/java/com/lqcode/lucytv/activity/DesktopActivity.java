@@ -143,10 +143,6 @@ public class DesktopActivity extends BaseActivity {
     }
 
     private void showSearch() {
-//        TranslateAnimation mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
-//                Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-//                -1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
-//        mShowAction.setDuration(500);
         AlphaAnimation mShowAction = new AlphaAnimation(0,1);
         mShowAction.setDuration(500);
         ivSearch.startAnimation(mShowAction);
