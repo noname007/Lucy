@@ -9,7 +9,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
+import com.lqcode.lucytv.tools.UiTool;
 import com.lqcode.lucytv.activity.DetailsLiveActivity;
 import com.lqcode.lucytv.entity.CCTVItem;
 import com.lqcode.lucytv.entity.Entity;
@@ -41,8 +41,7 @@ public class LiveFragment extends BaseFragment implements OnRecyclerItemClick {
         View view = inflater.inflate(R.layout.fragment, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
         srl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
-        srl.setColorSchemeResources(R.color.colorPrimaryDark,R.color.colorPrimaryDark, R.color.colorPrimaryDark,
-                        R.color.colorPrimaryDark);
+        UiTool.initSrl(srl);
 
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

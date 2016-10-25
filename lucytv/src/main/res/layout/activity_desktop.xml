@@ -62,14 +62,14 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/circle_white_bg"
                 android:hint="搜索电影"
-                android:paddingLeft="45dp"
+                android:imeOptions="actionSearch"
+                android:paddingLeft="40dp"
+                android:singleLine="true"
                 android:textColor="@color/text_black"
                 android:textColorHint="@color/text_hint"
+                android:textCursorDrawable="@null"
                 android:textSize="14sp"
-                android:visibility="gone"
-                android:imeOptions="actionSearch"
-                android:singleLine="true"
-                />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/search_movie_btn"
@@ -79,8 +79,7 @@
                 android:layout_marginTop="10dp"
                 android:scaleType="center"
                 android:src="@mipmap/ic_search_gray"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 

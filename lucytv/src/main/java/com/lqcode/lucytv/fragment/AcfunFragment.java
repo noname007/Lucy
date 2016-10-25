@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.alibaba.fastjson.JSON;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
+import com.lqcode.lucytv.tools.UiTool;
 import com.lqcode.lucytv.activity.DetailsAcfunActivity;
 import com.lqcode.lucytv.entity.AcfunItem;
 import com.lqcode.lucytv.entity.AcfunNetData;
@@ -36,6 +37,7 @@ public class AcfunFragment extends BaseFragment implements OnRecyclerItemClick {
         View view = inflater.inflate(R.layout.fragment, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
         srl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        UiTool.initSrl(srl);
 
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

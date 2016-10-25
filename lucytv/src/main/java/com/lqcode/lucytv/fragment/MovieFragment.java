@@ -1,5 +1,6 @@
 package com.lqcode.lucytv.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,16 +14,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.liqiong.lucy.module.impl.LucyController;
 import com.lqcode.lucytv.R;
+import com.lqcode.lucytv.tools.UiTool;
 import com.lqcode.lucytv.activity.DetailsMovieActivity;
 import com.lqcode.lucytv.entity.Entity;
 import com.lqcode.lucytv.entity.MovieInfo;
@@ -60,6 +61,8 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     if (!TextUtils.isEmpty(searchEt.getText()))
                         getMovieSearchLikeName(searchEt.getText().toString());
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(searchEt.getWindowToken(),0);
                     return true;
                 }
                 return false;
@@ -72,6 +75,7 @@ public class MovieFragment extends BaseFragment implements OnRecyclerItemClick {
         View view = inflater.inflate(R.layout.fragment, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_list_rv);
         srl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        UiTool.initSrl(srl);
 
         srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
